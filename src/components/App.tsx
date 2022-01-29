@@ -1,12 +1,12 @@
 import React from 'react';
-import Adder from './Adder';
 import List from './List';
+import Item from './Item';
 import './App.scss';
 
 export default function App() {
   return (
     <React.Fragment>
-      <Adder></Adder>
+      <Item></Item>
       <List></List>
     </React.Fragment>
   );
