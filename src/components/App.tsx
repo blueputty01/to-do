@@ -1,10 +1,13 @@
 import React from 'react';
+import Adder from './Adder';
+import List from './List';
 import './App.scss';
 
 export default function App() {
   return (
     <React.Fragment>
-      <main>hello world</main>
+      <Adder></Adder>
+      <List></List>
     </React.Fragment>
   );
 }
