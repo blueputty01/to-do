@@ -2,3 +2,10 @@ body {
   display: flex;
   justify-content: center;
 }
+
+main {
+  width: 100%;
+  max-width: 90rem;
+  min-width: 90vw;
+  flex: 1;
+}

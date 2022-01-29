@@ -5,9 +5,9 @@ import './App.scss';
 
 export default function App() {
   return (
-    <React.Fragment>
-      <Item></Item>
+    <main>
+      <Item placeholder={'✏️ take a note'}></Item>
       <List></List>
-    </React.Fragment>
+    </main>
   );
 }
