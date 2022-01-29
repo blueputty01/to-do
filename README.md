@@ -2,4 +2,4 @@
 
 # Credits
 
-[Tutorial on React and GitHub pages](https://github.com/gitname/react-gh-pages)
+[Tutorial for using React on GitHub pages](https://github.com/gitname/react-gh-pages)
