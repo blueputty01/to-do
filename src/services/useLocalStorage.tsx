@@ -13,6 +13,7 @@ function getStorageValue(key: string, defaultValue?: string) {
 
 export const clear = () => {
   localStorage.clear();
+  window.location.reload();
 };
 
 export const useLocalStorage = (key: string, defaultValue: any) => {
