@@ -5,19 +5,24 @@ import { useLocalStorage } from '../services/useLocalStorage';
 import { off } from 'process';
 
 interface ItemProps {
-  id: number;
+  id: string;
   onChange: Function;
-  children: string;
+  onBlur: React.FocusEventHandler;
+  placeholder?: string;
+  value: string;
 }
-function Item(props: ItemProps) {
+const Item = (props: ItemProps) => {
   return (
-    <div
+    <input
       contentEditable="true"
-      onChange={(event) => props.onChange(event, props.id)}
-    >
-      {props.children}
-    </div>
+      placeholder={props.placeholder}
+      onBlur={props.onBlur}
+      onChange={(event) =>
+        props.onChange(props.id, (event.target as HTMLInputElement).value)
+      }
+      value={props.value}
+    ></input>
   );
-}
+};
 
 export default Item;

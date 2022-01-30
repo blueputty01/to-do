@@ -2,26 +2,50 @@ import { useLocalStorage } from '../services/useLocalStorage';
 import React from 'react';
 import Item from './Item';
 
-//getting state https://stackoverflow.com/questions/27864951/how-to-access-a-childs-state-in-react/27875018#27875018
+interface ItemData {
+  value: string;
+  checked: boolean;
+}
 
+interface ItemList {
+  [key: string]: ItemData;
+}
+
+function uid() {
+  return (performance.now().toString(36) + Math.random().toString(36)).replace(
+    /\./g,
+    ''
+  );
+}
+
+//https://gist.github.com/gordonbrander/2230317?permalink_comment_id=3443509#gistcomment-3443509
 const List = () => {
-  const [list, setList] = useLocalStorage('list', []);
+  const empty: ItemList = {
+    add: { value: '✏️ start taking notes...', checked: false },
+  };
+  const [items, setItems] = useLocalStorage('items', empty);
 
-  const handleFieldChange = (itemId: number, value: string) => {
-    setList({ ...list, [itemId]: value });
+  const handleFieldChange = (id: string, value: string) => {
+    const newObj: ItemData = { value: value, checked: false };
+    setItems({ ...items, [id]: newObj });
   };
 
-  console.log(list);
+  const onBlur = () => {};
 
-  return (
-    <div>
-      {list.map((itemData: string, index: number) => {
-        <Item id={index} onChange={handleFieldChange}>
-          itemData
-        </Item>;
-      })}
-    </div>
-  );
+  const itemEles = Object.entries(items).map(([key, dat]) => {
+    const castedDat = dat as ItemData;
+    return (
+      <Item
+        key={key}
+        id={key}
+        onChange={handleFieldChange}
+        onBlur={}
+        value={castedDat.value}
+      ></Item>
+    );
+  });
+
+  return <div>{itemEles}</div>;
 };
 
 export default List;

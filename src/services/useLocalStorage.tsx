@@ -17,7 +17,7 @@ export const useLocalStorage = (key: string, defaultValue: any) => {
   });
 
   useEffect(() => {
-    // storing input name
+    // storing input
     localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
