@@ -1,11 +1,13 @@
 body {
   display: flex;
   justify-content: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 main {
   width: 100%;
   max-width: 90rem;
-  min-width: 90vw;
+  min-width: 40vw;
   flex: 1;
 }

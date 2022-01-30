@@ -6,21 +6,30 @@ import { off } from 'process';
 
 interface ItemProps {
   id: string;
+  checked: boolean;
   onChange: Function;
-  onBlur: Function;
+  onEnter: Function;
   placeholder?: string;
   value: string;
 }
 const Item = (props: ItemProps) => {
   return (
-    <div className="item">
-      <input type="checkbox" />
+    <div className={['item', props.checked ? 'checked' : ''].join(' ')}>
+      <input
+        type="checkbox"
+        checked={props.checked}
+        onChange={(event) => {
+          props.onChange(props.id, (event.target as HTMLInputElement).checked);
+        }}
+      />
       <input
         type="text"
         placeholder={props.placeholder}
-        onBlur={(event) =>
-          props.onBlur(props.id, (event.target as HTMLInputElement).value)
-        }
+        onKeyPress={(event) => {
+          if (event.key === 'Enter') {
+            props.onEnter(props.id, (event.target as HTMLInputElement).value);
+          }
+        }}
         onChange={(event) =>
           props.onChange(props.id, (event.target as HTMLInputElement).value)
         }

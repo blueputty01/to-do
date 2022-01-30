@@ -5,3 +5,10 @@
     padding: 0.5rem;
   }
 }
+
+.item.checked {
+  opacity: 0.6;
+  input[type='text'] {
+    text-decoration: line-through;
+  }
+}
