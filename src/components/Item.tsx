@@ -7,21 +7,26 @@ import { off } from 'process';
 interface ItemProps {
   id: string;
   onChange: Function;
-  onBlur: React.FocusEventHandler;
+  onBlur: Function;
   placeholder?: string;
   value: string;
 }
 const Item = (props: ItemProps) => {
   return (
-    <input
-      contentEditable="true"
-      placeholder={props.placeholder}
-      onBlur={props.onBlur}
-      onChange={(event) =>
-        props.onChange(props.id, (event.target as HTMLInputElement).value)
-      }
-      value={props.value}
-    ></input>
+    <div className="item">
+      <input type="checkbox" />
+      <input
+        type="text"
+        placeholder={props.placeholder}
+        onBlur={(event) =>
+          props.onBlur(props.id, (event.target as HTMLInputElement).value)
+        }
+        onChange={(event) =>
+          props.onChange(props.id, (event.target as HTMLInputElement).value)
+        }
+        value={props.value}
+      ></input>
+    </div>
   );
 };
 

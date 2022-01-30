@@ -11,6 +11,10 @@ function getStorageValue(key: string, defaultValue?: string) {
   }
 }
 
+export const clear = () => {
+  localStorage.clear();
+};
+
 export const useLocalStorage = (key: string, defaultValue: any) => {
   const [value, setValue] = useState(() => {
     return getStorageValue(key, defaultValue);

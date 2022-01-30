@@ -1,6 +1,7 @@
 import { useLocalStorage } from '../services/useLocalStorage';
 import React from 'react';
 import Item from './Item';
+import { generateKey } from 'crypto';
 
 interface ItemData {
   value: string;
@@ -20,8 +21,11 @@ function uid() {
 
 //https://gist.github.com/gordonbrander/2230317?permalink_comment_id=3443509#gistcomment-3443509
 const List = () => {
+  const addName = 'add';
+  const addDefault = { value: '✏️ start taking notes...', checked: false };
+
   const empty: ItemList = {
-    add: { value: '✏️ start taking notes...', checked: false },
+    [addName]: addDefault,
   };
   const [items, setItems] = useLocalStorage('items', empty);
 
@@ -30,7 +34,19 @@ const List = () => {
     setItems({ ...items, [id]: newObj });
   };
 
-  const onBlur = (event: React.FocusEvent) => {};
+  const onBlur = (id: string, value: string) => {
+    if (id === addName) {
+      console.log('bro');
+
+      setItems({
+        ...items,
+        [addName]: addDefault,
+        [uid()]: { value: value, checked: false },
+      });
+    }
+  };
+
+  console.log(items);
 
   const itemEles = Object.entries(items).map(([key, dat]) => {
     const castedDat = dat as ItemData;
