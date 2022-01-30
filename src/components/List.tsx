@@ -30,7 +30,7 @@ const List = () => {
     setItems({ ...items, [id]: newObj });
   };
 
-  const onBlur = () => {};
+  const onBlur = (event: React.FocusEvent) => {};
 
   const itemEles = Object.entries(items).map(([key, dat]) => {
     const castedDat = dat as ItemData;
@@ -39,7 +39,7 @@ const List = () => {
         key={key}
         id={key}
         onChange={handleFieldChange}
-        onBlur={}
+        onBlur={onBlur}
         value={castedDat.value}
       ></Item>
     );
