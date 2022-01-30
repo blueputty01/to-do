@@ -6,7 +6,7 @@ import './App.scss';
 export default function App() {
   return (
     <main>
-      <Item placeholder={'✏️ take a note'}></Item>
+      <Item onChange={() => {}}>✏️ take a note</Item>
       <List></List>
     </main>
   );

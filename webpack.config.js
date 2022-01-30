@@ -53,7 +53,10 @@ module.exports = (env, options) => {
       historyApiFallback: true,
       open: true,
       client: {
-        overlay: true,
+        overlay: {
+          errors: true,
+          warnings: false,
+        },
       },
     },
   };
