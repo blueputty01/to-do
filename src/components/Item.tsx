@@ -1,9 +1,6 @@
 import React from 'react';
 import './Item.scss';
 import '../styles/utils.scss';
-import { useLocalStorage } from '../services/useLocalStorage';
-import { off } from 'process';
-
 interface ItemProps {
   id: string;
   checked: boolean;
